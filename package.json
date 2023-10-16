@@ -1,0 +1,25 @@
+{
+  "name": "cypress_cucumber_ts_framework_example",
+  "version": "1.0.0",
+  "description": "Automation framework example created using TypeScript, Cypress, and a Cucumber wrapper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namnun19/cypress_cucumber_ts_automation_framework_example.git"
+  },
+  "author": "Juan Namnun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/namnun19/cypress_cucumber_ts_automation_framework_example/issues"
+  },
+  "homepage": "https://github.com/namnun19/cypress_cucumber_ts_automation_framework_example#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.3.1",
+    "typescript": "^5.2.2"
+  }
+}
