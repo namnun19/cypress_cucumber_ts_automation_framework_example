@@ -1,6 +1,8 @@
 import { defineConfig } from "cypress";
+// @ts-ignore
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
-import { preprocessor } from "@badeball/cypress-cucumber-preprocessor/browserify";
+import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
@@ -11,8 +13,8 @@ async function setupNodeEvents(
 
   on(
     "file:preprocessor",
-    preprocessor(config, {
-      typescript: require.resolve("typescript"),
+    createBundler({
+      plugins: [createEsbuildPlugin(config)],
     })
   );
 

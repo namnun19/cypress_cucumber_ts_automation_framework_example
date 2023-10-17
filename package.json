@@ -12,7 +12,8 @@
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
-      "cypress/support/step_definitions/**/[filepath].ts"
+      "cypress/support/step_definitions/**/[filepath].ts",
+      "cypress/support/step_definitions/ui/luma/general_step_definition.ts"
     ],
     "filterSpecs": true,
     "omitFiltered": true,
@@ -33,7 +34,7 @@
   "homepage": "https://github.com/namnun19/cypress_cucumber_ts_automation_framework_example#readme",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.6",
-    "@cypress/browserify-preprocessor": "^3.0.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "cypress": "^13.3.1",
     "playwright-webkit": "^1.39.0",
     "typescript": "^5.2.2"
