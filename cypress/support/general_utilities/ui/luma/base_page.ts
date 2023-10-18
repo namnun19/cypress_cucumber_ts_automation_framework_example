@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import { generalWebElements } from "./general_elements";
 
-export enum HeaderEnum { SearchTextArea = 10, SearchResultList, ShoppingCart, SearchDropdown };
+export enum HeaderEnum { SearchTextArea = 10, SearchResultsDropdown, SearchResultList, ShoppingCart, SearchDropdown };
 
 export type WebElementsResourcesEnum = typeof HeaderEnum;
 
