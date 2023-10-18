@@ -6,6 +6,11 @@ export const generalWebElements: {} = {
         innerText: '',
         elementId: HeaderEnum.SearchTextArea
     },
+    searchResultsList: {
+        locator: '#search_autocomplete ul[role="listbox"] li',
+        innerText: '',
+        elementId: HeaderEnum.SearchResultList
+    },
     shoppingCartButton: {
         locator: '',
         innerText: '',

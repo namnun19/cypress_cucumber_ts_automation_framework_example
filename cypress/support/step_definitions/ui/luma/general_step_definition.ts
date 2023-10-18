@@ -1,8 +1,13 @@
-import { Given } from "@badeball/cypress-cucumber-preprocessor";
+import { Before, Given } from "@badeball/cypress-cucumber-preprocessor";
 import HomePage from "support/page_objects/ui/luma/section/home_page";
 
+Before(() => {
 
-// Defining the general stap that is included in the "Background" keyboard
+    cy.intercept('GET', '**/search/**').as('SearchResults');
+
+})
+
+// Defining the general step that is included in the "Background" keyboard
 Given('user navigates to the Luma homepage', () => {
 
     HomePage.accessWebApplication();
