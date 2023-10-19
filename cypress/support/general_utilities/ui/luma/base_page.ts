@@ -14,6 +14,7 @@ export enum CheckoutPageEnum {
     CheckoutFormZipCodeInput,
     CheckoutFormPhoneNumberInput,
     CheckoutFormNextButton,
+    CheckoutLoadingIcon
 };
 export enum OrderInfoPageEnum { OrderInfoItemMessage = 40 };
 

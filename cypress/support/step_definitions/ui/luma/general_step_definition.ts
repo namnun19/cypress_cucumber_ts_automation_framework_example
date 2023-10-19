@@ -69,66 +69,12 @@ Then('the {string} should be added from the {string} to the {string}',
 
 When('user clicks the {string}', (featureText: string) => {
 
-    cy.wait('@OrderSummaryDetails', { requestTimeout: 20000, responseTimeout: 20000 })
-        .then(() => {
-
-            CheckoutPage.selectBasicWebElement(
-                featureText,
-                'locator',
-                CheckoutPage.checkoutPageEn,
-                CheckoutPage.checkoutPageElements
-            ).click({ force: true })
-                .then(() => {
-                    cy.wait('@ShippingAddressForm', { requestTimeout: 40000, responseTimeout: 40000 })
-                });
-
-        });
+    CheckoutPage.checkoutOrder(featureText);
 
 });
 
 When('fills out the form, then clicks the {string}', (featureText: string) => {
 
-    // HomePage.fillInputText(
-    //     'Testing',
-    //     'Automation',
-    //     CheckoutPage.checkoutPageEn,
-    //     CheckoutPage.checkoutPageElements,
-    // );
-    // cy.wait('@ShippingAddressForm', { requestTimeout: 20000 }).then(() => {
-
-    cy.get('#checkout-loader').should('not.exist').then(() => {
-
-        CheckoutPage.fillInputText(
-            'Testing',
-            'CheckoutFormEmailInput',
-            'locator',
-            CheckoutPage.checkoutPageEn,
-            CheckoutPage.checkoutPageElements
-        );
-    
-        // CheckoutPage.selectBasicWebElement(
-        //     'CheckoutFormEmailInput',
-        //     'locator',
-        //     CheckoutPage.checkoutPageEn,
-        //     CheckoutPage.checkoutPageElements
-        // ).type('Testing', {force: true});
-
-        CheckoutPage.fillInputText(
-            'Testing1',
-            'CheckoutFormFirstNameInput',
-            'locator',
-            CheckoutPage.checkoutPageEn,
-            CheckoutPage.checkoutPageElements
-        );
-    
-        CheckoutPage.fillInputText(
-            'Testing2',
-            'CheckoutFormLastNameInput',
-            'locator',
-            CheckoutPage.checkoutPageEn,
-            CheckoutPage.checkoutPageElements
-        );
-
-    });
+    CheckoutPage.fillOutShippingForm();
 
 });

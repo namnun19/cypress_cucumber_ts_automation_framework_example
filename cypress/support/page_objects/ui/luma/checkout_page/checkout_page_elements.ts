@@ -51,5 +51,10 @@ export const checkoutPageWebElements: {} = {
         innerText: '',
         elementId: CheckoutPageEnum.CheckoutButton
     },
+    checkoutLoadingIcon: {
+        locator: '#checkout-loader',
+        innerText: '',
+        elementId: CheckoutPageEnum.CheckoutLoadingIcon
+    },
 
 };
