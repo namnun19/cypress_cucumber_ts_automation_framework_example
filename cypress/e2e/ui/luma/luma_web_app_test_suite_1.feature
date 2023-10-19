@@ -11,7 +11,9 @@ Feature: "Luma" E-Commerce Web App - Test Suite #1
         #General step
         When clicks the "SearchTextArea" and looks for a "<productName>"
         #General step
-        Then the "<productName>" product should be shown in the "SearchResultsDropdown" and clickable
+        Then the "<productName>" product should be shown in the "SearchResultsDropdown", and be clickable
+        And the "SearchResultsListTitle" should reflect the "<productName>" product
+        And the content and total of elements in the "SearchResultsList" should be the expected for "<productName>"
         Examples: 
             |productName|
             |Erika Running Short|

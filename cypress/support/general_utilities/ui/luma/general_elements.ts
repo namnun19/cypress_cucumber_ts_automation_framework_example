@@ -16,9 +16,4 @@ export const generalWebElements: {} = {
         innerText: '',
         elementId: HeaderEnum.ShoppingCart
     },
-    searchDropdown: {
-        locator: '',
-        innerText: '',
-        elementId: HeaderEnum.SearchDropdown
-    },
 };

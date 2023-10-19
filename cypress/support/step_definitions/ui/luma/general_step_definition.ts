@@ -3,7 +3,9 @@ import HomePage from "support/page_objects/ui/luma/section/home_page";
 
 Before(() => {
 
+    //Intercepting API calls than seemed approiate to help achieve synchronization
     cy.intercept('GET', '**/search/**').as('SearchResults');
+    cy.intercept('GET', '**/template/minicart/**').as('MiniCartContent');
 
 })
 
@@ -17,14 +19,15 @@ Given('user navigates to the Luma homepage', () => {
 // Defining some more general steps shared between features
 When('clicks the {string} and looks for a {string}', (featureText: string, textToEnter: string) => {
 
-    HomePage.fillInputText(textToEnter, featureText, 'locator', HomePage.header);
+    HomePage.fillInputText(textToEnter, featureText, 'locator', HomePage.headerEn);
 
 });
 
 Then(
-    'the {string} product should be shown in the {string} and clickable',
+    'the {string} product should be shown in the {string}, and be clickable',
     (productName: string, featureText: string) => {
 
-        HomePage.selectProductFromDropdown(productName, featureText, 'locator', HomePage.header);
+        HomePage.selectProductFromDropdown(productName, featureText, 'locator', HomePage.headerEn);
+        cy.get('@DropdownLength').then($length => console.log(`Size of the dropdown:\n${$length}`));
 
     });
