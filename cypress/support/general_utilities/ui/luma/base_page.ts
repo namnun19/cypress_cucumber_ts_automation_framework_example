@@ -3,12 +3,25 @@ import { generalWebElements } from "./general_elements";
 
 export enum HeaderEnum { SearchTextArea = 10, SearchResultsDropdown, ShoppingCart, SearchDropdown };
 export enum HomePageEnum { SearchResultsListTitle = 20, SearchResultsList, ProductSize, ProductColor };
-export enum CheckoutPageEnum { CheckoutItemsList = 30 };
+export enum CheckoutPageEnum {
+    CheckoutItemsList = 30,
+    CheckoutButton,
+    CheckoutFormEmailInput,
+    CheckoutFormFirstNameInput,
+    CheckoutFormLastNameInput,
+    CheckoutFormCityInput,
+    CheckoutFormStateDropdown,
+    CheckoutFormZipCodeInput,
+    CheckoutFormPhoneNumberInput,
+    CheckoutFormNextButton,
+};
+export enum OrderInfoPageEnum { OrderInfoItemMessage = 40 };
 
 export type WebElementsResourcesEnum =
     typeof HeaderEnum |
     typeof HomePageEnum |
-    typeof CheckoutPageEnum
+    typeof CheckoutPageEnum |
+    typeof OrderInfoPageEnum
     ;
 
 
@@ -19,6 +32,7 @@ export abstract class BasePage {
         protected HeaderEn = HeaderEnum,
         protected HomePageEn = HomePageEnum,
         protected CheckoutPageEn = CheckoutPageEnum,
+        protected OrderInfoPageEn = OrderInfoPageEnum,
     ) {
     };
 
@@ -46,24 +60,32 @@ export abstract class BasePage {
 
     };
 
-    fillInputText(textToEnter: string, featureText: string, elementLocator: 'locator' | 'innerText', relatedEnum: WebElementsResourcesEnum): void {
+    fillInputText(
+        textToEnter: string,
+        featureText: string,
+        elementLocator: 'locator' | 'innerText',
+        relatedEnum: WebElementsResourcesEnum,
+        webElementsObj: {},
+    ): void {
 
         this.selectElementLocatorStrategy(
             elementLocator,
-            this.getElementLocatorFromFeatureText(featureText, relatedEnum, this.generalElements, elementLocator)
+            this.getElementLocatorFromFeatureText(featureText, relatedEnum, webElementsObj, elementLocator)
         ).type(textToEnter);
 
     };
 
     // TODO: Confirm whether this method is actually useful, or remove it if otherwise
-    selectGeneralWebElement(
+    selectBasicWebElement(
         featureText: string,
         elementLocator: 'locator' | 'innerText',
-        relatedEnum: WebElementsResourcesEnum): any {
+        relatedEnum: WebElementsResourcesEnum,
+        webElementsObj: {},
+        ): any {
 
         return this.selectElementLocatorStrategy(
             elementLocator,
-            this.getElementLocatorFromFeatureText(featureText, relatedEnum, this.generalElements, elementLocator)
+            this.getElementLocatorFromFeatureText(featureText, relatedEnum, webElementsObj, elementLocator)
         )
 
     };

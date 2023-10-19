@@ -1,5 +1,5 @@
 import { BasePage, CheckoutPageEnum } from "support/general_utilities/ui/luma/base_page";
-import { checkoutPageWebElements } from "./checkout_page_elements";
+import { checkoutPageWebElements } from "../checkout_page/checkout_page_elements";
 
 export class CheckoutPage extends BasePage {
 

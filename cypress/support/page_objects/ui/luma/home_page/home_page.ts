@@ -5,11 +5,16 @@ import CheckoutPage from "../checkout_page/checkout_page";
 export class HomePage extends BasePage {
 
     private _headerEnum = this.HeaderEn;
+    private _headerGeneralElements = this.generalElements;
     private _homePageEnum = this.HomePageEn;
     private _homePageElments = homePageWebElements;
 
     public get headerEn() {
         return this._headerEnum;
+    };
+
+    public get headerGeneralElements() {
+        return this._headerGeneralElements;
     };
 
     public get homePageEn() {
@@ -198,7 +203,7 @@ export class HomePage extends BasePage {
             (this.homePageElements as any)['addedToCartSuccessMessage']['locator'],
         {timeout: 15000}).should('exist');
         
-        this.selectGeneralWebElement(featureText, 'locator', this.headerEn).click();
+        this.selectBasicWebElement(featureText, 'locator', this.headerEn, this.generalElements).click();
 
         cy.get((this.generalElements as any)['viewCartLink']['locator']).click();
 
