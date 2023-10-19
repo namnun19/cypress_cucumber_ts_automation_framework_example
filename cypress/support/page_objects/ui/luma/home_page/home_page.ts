@@ -1,5 +1,6 @@
 import { BasePage } from "support/general_utilities/ui/luma/base_page";
 import { homePageWebElements } from "./home_page_elements";
+import CheckoutPage from "../checkout_page/checkout_page";
 
 export class HomePage extends BasePage {
 
@@ -139,7 +140,7 @@ export class HomePage extends BasePage {
 
     };
 
-    addProductToCart(productName: string, featureText: string): void {
+    addProductToCart(featureText: string): void {
 
         // Adding a conditional logic here due to possible issues with the experimental version of "Safari"
         cy.wait(200).then(() => {
@@ -186,6 +187,27 @@ export class HomePage extends BasePage {
                 });
 
             });
+
+        });
+
+    };
+
+    verifyProductFromCart(productName: string, featureText: string): void {
+
+        cy.get(
+            (this.homePageElements as any)['addedToCartSuccessMessage']['locator'],
+        {timeout: 15000}).should('exist');
+        
+        this.selectGeneralWebElement(featureText, 'locator', this.headerEn).click();
+
+        cy.get((this.generalElements as any)['viewCartLink']['locator']).click();
+
+        cy.get(
+            (CheckoutPage.checkoutPageElements as any)['checkoutItemsList']['locator']
+            ).eq(0)
+            .then( $itemName => {
+
+            expect($itemName.text().toLowerCase()).to.contain(productName.toLowerCase());
 
         });
 

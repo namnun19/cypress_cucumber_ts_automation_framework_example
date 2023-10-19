@@ -12,8 +12,13 @@ export const generalWebElements: {} = {
         elementId: HeaderEnum.SearchResultsDropdown
     },
     shoppingCartButton: {
-        locator: '',
+        locator: '[data-block="minicart"]',
         innerText: '',
         elementId: HeaderEnum.ShoppingCart
+    },
+    viewCartLink: {
+        locator: 'a.action.viewcart',
+        innerText: '',
+        elementId: null
     },
 };

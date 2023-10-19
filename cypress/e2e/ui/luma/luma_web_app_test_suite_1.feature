@@ -7,7 +7,7 @@ Feature: "Luma" E-Commerce Web App - Test Suite #1
         Given user navigates to the Luma homepage
 
     @LM-SS-TC-002
-    Scenario Outline: Verify Product Search - Exact match - Valid product name
+    Scenario Outline: LM-SS-TC-002 - Verify Product Search - Exact match - Valid product name
         #General step
         When clicks the "SearchTextArea" and looks for a "<productName>"
         #General step

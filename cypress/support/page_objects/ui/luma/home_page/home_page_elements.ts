@@ -27,4 +27,9 @@ export const homePageWebElements: {} = {
         innerText: '',
         elementId: null
     },
+    addedToCartSuccessMessage: {
+        locator: 'div[data-ui-id="message-success"]',
+        innerText: '',
+        elementId: null
+    },
 };
