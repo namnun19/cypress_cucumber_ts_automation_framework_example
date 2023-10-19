@@ -1,13 +1,13 @@
-@TestSuite1
-Feature: "Luma" E-Commerce Web App - Test Suite #1
-    Luma - Search Section Test Suite
+
+Feature: "Luma" E-Commerce Web App - Test Suite #2
+    Luma - Add Products Test Suite
 
     Background: Initial navigation to the "Luma" homepage
         #General step
         Given user navigates to the Luma homepage
 
-    @LM-SS-TC-002
-    Scenario Outline: Verify Product Search - Exact match - Valid product name
+    @LM-AP-TC-002
+    Scenario Outline: Verify Product Addition - Add to Cart - Search Results
         #General step
         When clicks the "SearchTextArea" and looks for a "<productName>"
         #General step
@@ -16,6 +16,7 @@ Feature: "Luma" E-Commerce Web App - Test Suite #1
         And the "SearchResultsListTitle" should reflect the "<productName>" product
         #General step
         And the content and total of elements in the "SearchResultsList" should be the expected for "<productName>"
+        And the "<productName>" should be added from the "SearchResultsList" to the the "ShopppingCart"
         Examples: 
             |productName|
             |Erika Running Short|

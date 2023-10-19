@@ -28,6 +28,23 @@ Then(
     (productName: string, featureText: string) => {
 
         HomePage.selectProductFromDropdown(productName, featureText, 'locator', HomePage.headerEn);
-        cy.get('@DropdownLength').then($length => console.log(`Size of the dropdown:\n${$length}`));
 
     });
+
+Then('the {string} should reflect the {string} product', (featureText: string, productName: string) => {
+
+    HomePage.verifyResultsListTitle(
+        productName,
+        featureText,
+        'locator',
+        HomePage.homePageEn
+    );
+
+});
+
+Then('the content and total of elements in the {string} should be the expected for {string}', 
+(featureText: string, productName: string) => {
+
+    HomePage.verifyResultsList(productName, featureText, 'locator', HomePage.homePageEn);
+
+});

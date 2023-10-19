@@ -93,39 +93,100 @@ export class HomePage extends BasePage {
         relatedEnum: typeof this.homePageEn
     ): void {
 
-        cy.wait('@MiniCartContent');
+        // Adding a conditional logic here due to possible issues with the experimental version of "Safari"
+        cy.wait(200).then(() => {
+            
+            if(Cypress.browser.name !== 'webkit'){
+                cy.wait('@MiniCartContent');
+            }else{
+                cy.wait(1000);
+            }
+
+        });
 
         cy.get(
             this.getElementLocatorFromFeatureText(featureText, relatedEnum, this.homePageElements, elementLocator)
-        ).then( $resultsList => {
+        ).then($resultsList => {
 
             // TODO: Confirm whether this "Dropdown length" validation suppose a value for the business
-            cy.get('@DropdownLength').then( $dropdownLength => {
+            cy.get('@DropdownLength').then($dropdownLength => {
 
-                if(+$dropdownLength > 1){
-                    
-                    if($resultsList.length <= +$dropdownLength){
+                if (+$dropdownLength > 1) {
 
-                        cy.wrap($resultsList).eq(0).then( $firstProduct => {
+                    if ($resultsList.length <= +$dropdownLength) {
+
+                        cy.wrap($resultsList).eq(0).then($firstProduct => {
                             expect($firstProduct.text().toLowerCase()).to.contain(productName.toLowerCase());
                         })
 
-                    }else{
+                    } else {
 
                         throw new Error('Result list size is invalid');
 
                     };
 
-                }else {
-                    
-                    cy.wrap($resultsList).eq(0).then( $firstProduct => {
+                } else {
+
+                    cy.wrap($resultsList).eq(0).then($firstProduct => {
                         expect($firstProduct.text().toLowerCase()).to.contain(productName.toLowerCase());
                     });
 
                 };
 
             });
+
+        });
+
+    };
+
+    addProductToCart(productName: string, featureText: string): void {
+
+        // Adding a conditional logic here due to possible issues with the experimental version of "Safari"
+        cy.wait(200).then(() => {
             
+            if(Cypress.browser.name !== 'webkit'){
+                cy.wait('@MiniCartContent');
+            }else{
+                cy.wait(1000);
+            }
+
+        });
+
+        cy.get(
+            this.getElementLocatorFromFeatureText(featureText, this.homePageEn, this.homePageElements, 'locator')
+        ).then($resultsList => {
+
+            // Adding the first returned product to the cart
+            cy.wrap($resultsList).eq(0).then($firstProduct => {
+
+                // Using explicit wait here just as simple synchronization method
+                cy.wait(200).then(() => {
+
+                    // First validating whether the product contains "size" and "color" options
+                    if (
+                        $firstProduct.find((this.homePageElements as any)['productSize']['locator']).length &&
+                        $firstProduct.find((this.homePageElements as any)['productColor']['locator']).length
+                    ) {
+
+                        cy.wrap(
+                            $firstProduct.find((this.homePageElements as any)['productSize']['locator'])
+                        ).eq(0).click();
+
+                        cy.wrap(
+                            $firstProduct.find((this.homePageElements as any)['productColor']['locator'])
+                        ).eq(0).click();
+
+                    };
+
+                    // Adding the product to the cart
+                    cy.wrap($firstProduct).find(
+                        (this.homePageElements as any)['addToCartButton']['locator']
+                    ).click({ force: true });
+
+                });
+
+            });
+
         });
 
     };

@@ -2,7 +2,7 @@
 import { generalWebElements } from "./general_elements";
 
 export enum HeaderEnum { SearchTextArea = 10, SearchResultsDropdown, ShoppingCart, SearchDropdown };
-export enum HomePageEnum { SearchResultsListTitle = 20, SearchResultsList };
+export enum HomePageEnum { SearchResultsListTitle = 20, SearchResultsList, ProductSize, ProductColor };
 
 export type WebElementsResourcesEnum = typeof HeaderEnum | typeof HomePageEnum;
 

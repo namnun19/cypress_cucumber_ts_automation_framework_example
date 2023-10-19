@@ -12,4 +12,19 @@ export const homePageWebElements: {} = {
         innerText: '',
         elementId: HomePageEnum.SearchResultsList
     },
+    productSize: {
+        locator: 'div.swatch-attribute.size div div',
+        innerText: '',
+        elementId: HomePageEnum.ProductSize
+    },
+    productColor: {
+        locator: 'div.swatch-attribute.color div div',
+        innerText: '',
+        elementId: HomePageEnum.ProductColor
+    },
+    addToCartButton: {
+        locator: 'button[title="Add to Cart"]',
+        innerText: '',
+        elementId: null
+    },
 };

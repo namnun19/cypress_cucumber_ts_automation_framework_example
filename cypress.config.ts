@@ -26,6 +26,8 @@ export default defineConfig({
   viewportWidth: 1024,
   viewportHeight: 768,
   retries: 1,
+  video: true,
+  videoCompression: true,
   e2e: {
     specPattern: "cypress/e2e/**/*.feature",
     baseUrl: "https://magento.softwaretestingboard.com/",
