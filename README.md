@@ -1,10 +1,10 @@
-# JS QA Challenge - Automation Framework - Juan Namnun
+# TS QA Example - Automation Framework - Juan Namnun
 
 This is a demo project created intended for recruitment processes/skill assessments by Juan Miguel Namnún Ramos (Namnun).
 
 ## TypeScript / Cypress 
 
-This automation framework was developed using [**TypeScript**](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), version [5.2.2](https://github.com/microsoft/TypeScript/releases/tag/v5.1.3), and it uses [**Cypress**](https://docs.cypress.io/guides/overview/why-cypress) at its core, specifically with version [13.3.1](https://docs.cypress.io/guides/references/changelog#13-3-1), to support the automation scripts for both UI and API Testing.
+This automation framework was developed using [**TypeScript**](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html), version [5.2.2](https://github.com/microsoft/TypeScript/releases/tag/v5.2.2), and it uses [**Cypress**](https://docs.cypress.io/guides/overview/why-cypress) at its core, specifically with version [13.3.1](https://docs.cypress.io/guides/references/changelog#13-3-1), to support the automation scripts for both UI and API Testing.
 
 ## Cucumber-preprocessor
 
